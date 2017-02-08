@@ -2,7 +2,10 @@ var path = require('path');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-    entry: path.resolve(__dirname, '../app/index/index.js'),
+    entry: [
+        'webpack-hot-middleware/client',
+        path.resolve(__dirname, '../app/index/index.js')
+    ],
 
     output: {
         path: path.resolve(__dirname, '../output/static'),
@@ -21,11 +24,11 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.vue&/,
+                test: /\.vue$/,
                 loader: 'vue-loader'
             },
             {
-                test: /\.js&/,
+                test: /\.js$/,
                 loader: 'babel-loader?presets=es2015',
                 exclude: /node_modules/
             }
