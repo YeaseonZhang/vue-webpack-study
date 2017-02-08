@@ -6,7 +6,7 @@
     export default {
         data: function () {
             return {
-                name: 'Yeaseon'
+                name: 'YeaseonZhang'
             }
         }
     }

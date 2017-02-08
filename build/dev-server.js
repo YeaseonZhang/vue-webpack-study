@@ -1,6 +1,6 @@
 var express = require('express');
 var webpack = require('webpack');
-var config = require('./webpack.dev.config');
+var config = require('./webpack.dev.conf');
 
 var app = express();
 var compiler = webpack(config);
@@ -13,12 +13,20 @@ var devMiddleware = require('webpack-dev-middleware')(compiler, {
     }
 })
 
-// var hotMiddleware = require('webpack-hot-middleware')(compiler);
+var hotMiddleware = require('webpack-hot-middleware')(compiler);
+
+// detecte *.html files change 
+compiler.plugin('compilation', (compilation) => {
+    compilation.plugin('html-webpack-plugin-after-emit', (data, cb) => {
+        hotMiddleware.publish({ action: 'reload' });
+        cb();
+    })
+})
 
 app.use(devMiddleware);
-// app.use(hotMiddleware);
+app.use(hotMiddleware);
 
-app.listen(3000, function (err) {
+app.listen(3000, (err) => {
     if (err) {
         console.log(err);
         return

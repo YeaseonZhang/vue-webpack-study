@@ -7,9 +7,9 @@ var config = require('./webpack.config');
 config.output.publicPath = '/';
 
 config.plugins = [
-    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoErrorsPlugin,
+    new webpack.NoErrorsPlugin(),
 
     new HtmlWebpackPlugin({
         filename: 'app/index/index.html',
@@ -17,5 +17,11 @@ config.plugins = [
         inject: true
     })
 ];
+
+var devClient = './build/dev-client';
+Object.keys(config.entry).forEach((name, i) => {
+    var extras = [devClient]
+    config.entry[name] = extras.concat(config.entry[name])
+})
 
 module.exports = config;
