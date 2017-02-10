@@ -1,5 +1,5 @@
 import Vue from 'Vue'
-import Favlist from './components/Favlist.vue'
+import Favlist from './components/Favlist'
 
 // open debug
 Vue.config.debug = true;

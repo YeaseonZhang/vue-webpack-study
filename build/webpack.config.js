@@ -3,9 +3,7 @@ var HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
     entry: {
-        index: [
-            path.resolve(__dirname, '../app/index/index.js')
-        ]
+        path: path.resolve(__dirname, '../app/index/index.js')
     },
 
     output: {
