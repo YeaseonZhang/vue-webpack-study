@@ -35,7 +35,7 @@ config.plugins = [
 
     new webpack.optimize.CommonsChunkPlugin({
         name: 'vendors',
-        filename: 'vendors,js'
+        filename: 'vendors.js'
     }),
 
     new ExtractTextPlugin('../[name].[contenthash].css'),
